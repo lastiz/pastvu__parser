@@ -7,7 +7,7 @@
 
 - Activate virtual environment:
     - For Windows: .venv\Scripts\activate
-	- For Linux: .venv/bin/activate
+    - For Linux: .venv/bin/activate
 
 - pip install -r requirements.txt
 
