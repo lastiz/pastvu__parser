@@ -79,7 +79,8 @@ class Downloader:
                 shutil.copyfileobj(file_response.raw, f)
         except:
             logger.error(f"Failed to save file {file_full_path}")
-        logger.info(f"Completed saving file {file_full_path}")
+        else:
+            logger.info(f"Completed saving file {file_full_path}")
 
 
 class Scraper:
