@@ -112,14 +112,14 @@ class Scraper:
         self.session.close()
 
     @property
-    def headers(self) -> dict:
-        return self._headers
+    def user_agent(self) -> str:
+        return self._user_agent
 
-    @headers.setter
-    def headers(self, val: dict) -> None:
-        if not isinstance(val, dict):
-            raise TypeError("Headers value must be a dict")
-        self._headers = val
+    @user_agent.setter
+    def user_agent(self, val: dict) -> None:
+        if not isinstance(val, str):
+            raise TypeError("User Agent value must be a string")
+        self._user_agent = val
 
     def get(self, url: str) -> None:
         """Get driver to :url"""
