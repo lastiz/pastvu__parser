@@ -101,7 +101,7 @@ class Scraper:
     def __enter__(self) -> Self:
         chrome_options = Options()
         chrome_options.add_argument(f"--user-agent={self._user_agent}")
-        chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
+        chrome_options.add_experimental_option("excludeSwitches", ["enable-logging"])
         if settings.HEADLESS:
             chrome_options.add_argument("--headless")
 

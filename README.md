@@ -5,6 +5,10 @@
 
 - python -m venv .venv
 
+- Activate virtual environment:
+    - For Windows: .venv\Scripts\activate
+	- For Linux: .venv/bin/activate
+
 - pip install -r requirements.txt
 
 - Adjust settings in settings.py -> Settings
