@@ -1,3 +1,5 @@
 pydantic
 requests
 pydantic_settings
+selenium
+pathvalidate
