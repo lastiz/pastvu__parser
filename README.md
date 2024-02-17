@@ -22,4 +22,5 @@
 
 - RELATIVE_STORAGE_FOLDER: relative path to folder where files to storage
 
+- HEADLESS: set True to hide webdriver
 ---

@@ -1,6 +1,7 @@
 from pathlib import Path
 from typing import Self
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 import requests
@@ -85,9 +86,7 @@ class Scraper:
     _slowMo = settings.SLOW_MO
     _session = None
     _base_urls = settings.BASE_URLS
-    _headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
-    }
+    _user_agent: str = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
     _items_per_page = settings.ITEMS_PER_PAGE
 
     def __init__(self) -> None:
@@ -100,7 +99,13 @@ class Scraper:
         return self._session
 
     def __enter__(self) -> Self:
-        self._session = webdriver.Chrome()
+        chrome_options = Options()
+        chrome_options.add_argument(f"--user-agent={self._user_agent}")
+        chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
+        if settings.HEADLESS:
+            chrome_options.add_argument("--headless")
+
+        self._session = webdriver.Chrome(options=chrome_options)
         return self
 
     def __exit__(self, *args, **kwargs) -> None:
